@@ -1,37 +1,31 @@
 import 'package:develop_app_hoangnm/ui/shared/colors.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
-import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_splash_view.dart';
-import 'package:develop_app_hoangnm/view_models/splash_view_model.dart';
+import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_shopping_bag_view.dart';
+import 'package:develop_app_hoangnm/ui/views/base_view.dart';
+import 'package:develop_app_hoangnm/view_models/shoping_bag_view_model.dart';
 import 'package:flutter/material.dart';
 
-import 'base_view.dart';
 
-
-class SplashView extends BaseView {
-  const SplashView({Key? key}) : super(key: key);
+class ShoppingBagView extends BaseView {
+  const ShoppingBagView({Key? key}) : super(key: key);
 
   @override
-  SplashViewState createState() => SplashViewState();
+  ShoppingBagViewState createState() => ShoppingBagViewState();
 }
 
-class SplashViewState extends BaseViewState<SplashView,
-    SplashViewModel, DimensSplashView> {
+class ShoppingBagViewState extends BaseViewState<ShoppingBagView,
+    ShoppingBagViewModel, DimensShoppingBagView> {
 
   @override
   void createDimens() {
     super.createDimens();
-    viewSize = DimensManager().dimensSplashView;
+    viewSize = DimensManager().dimensShoppingBagView;
   }
 
   @override
   void createViewModel() {
     super.createViewModel();
-    viewModel = SplashViewModel()..onInitViewModel(context);
-  }
-
-  @override
-  void onBuildCompleted() {
-    super.onBuildCompleted();
+    viewModel = ShoppingBagViewModel()..onInitViewModel(context);
   }
 
   @override

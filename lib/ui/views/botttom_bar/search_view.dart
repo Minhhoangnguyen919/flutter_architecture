@@ -1,37 +1,31 @@
 import 'package:develop_app_hoangnm/ui/shared/colors.dart';
+import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_search.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
-import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_splash_view.dart';
-import 'package:develop_app_hoangnm/view_models/splash_view_model.dart';
+import 'package:develop_app_hoangnm/ui/views/base_view.dart';
+import 'package:develop_app_hoangnm/view_models/search_view_model.dart';
 import 'package:flutter/material.dart';
 
-import 'base_view.dart';
 
-
-class SplashView extends BaseView {
-  const SplashView({Key? key}) : super(key: key);
+class SearchView extends BaseView {
+  const SearchView({Key? key}) : super(key: key);
 
   @override
-  SplashViewState createState() => SplashViewState();
+  SearchViewState createState() => SearchViewState();
 }
 
-class SplashViewState extends BaseViewState<SplashView,
-    SplashViewModel, DimensSplashView> {
+class SearchViewState extends BaseViewState<SearchView,
+    SearchViewModel, DimensSearchView> {
 
   @override
   void createDimens() {
     super.createDimens();
-    viewSize = DimensManager().dimensSplashView;
+    viewSize = DimensManager().dimensSearchView;
   }
 
   @override
   void createViewModel() {
     super.createViewModel();
-    viewModel = SplashViewModel()..onInitViewModel(context);
-  }
-
-  @override
-  void onBuildCompleted() {
-    super.onBuildCompleted();
+    viewModel = SearchViewModel()..onInitViewModel(context);
   }
 
   @override

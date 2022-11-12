@@ -6,6 +6,6 @@ class DimensMainView extends BaseDimens {
   //Size determination for each screen
   @override
   void initialDimens<MainView>() {
-    footerIconSize = (footerTabHeight - homeIndicatorHeight) * 0.955;
+    footerIconSize = (footerTabHeight - homeIndicatorHeight) * 0.45;
   }
 }
