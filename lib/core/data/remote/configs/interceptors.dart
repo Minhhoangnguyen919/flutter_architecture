@@ -58,13 +58,13 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
           break;
         case 401:
           //TODO retry login
-          if (path ==
-              appDio.processUri(url: ApiEndPointConstants.signIn).toString()) {
-            /// Because API called don't need retry
-            LogUtils.d("[$path] throws UnauthorisedException...");
-            handler.reject(UnauthorisedException(err.requestOptions, failure));
-            return;
-          }
+          // if (path ==
+          //     appDio.processUri(url: ApiEndPointConstants.signIn).toString()) {
+          //   /// Because API called don't need retry
+          //   LogUtils.d("[$path] throws UnauthorisedException...");
+          //   handler.reject(UnauthorisedException(err.requestOptions, failure));
+          //   return;
+          // }
           await _processRefreshToken(err, handler);
           break;
         case 403:
@@ -162,7 +162,7 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
     final String? accessToken = SPrefUserModel().getAccessToken();
     final String? refreshToken = SPrefUserModel().getRefreshToken();
     Uri uri =
-        appDio.processUri(url: ApiEndPointConstants.refreshToken, param: null);
+        appDio.processUri(url: "", param: null);
     final body = {"accessToken": accessToken, "refreshToken": refreshToken};
     LogUtils.d(
         '[$runtimeType][REQUEST:POST][REFRESH_TOKEN] API:【${uri.path}】 body:$body');

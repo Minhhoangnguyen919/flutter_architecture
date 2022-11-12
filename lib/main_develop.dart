@@ -20,7 +20,7 @@ void _setUpFlavorDevelop() {
       flavor: flavorName,
       color: Colors.redAccent,
       // それ以外のAPIの接続先
-      baseApiUrl: "http://10.20.22.42:1505/api/v1",
+      baseApiUrl: "",
       versionAPI: "",
       othersVersionApi: {},
       supportMailAddress: "",
