@@ -3,6 +3,7 @@ import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_splash_view.dart';
 import 'package:develop_app_hoangnm/view_models/splash_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'base_view.dart';
 
@@ -16,7 +17,6 @@ class SplashView extends BaseView {
 
 class SplashViewState extends BaseViewState<SplashView,
     SplashViewModel, DimensSplashView> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void createDimens() {
@@ -38,9 +38,13 @@ class SplashViewState extends BaseViewState<SplashView,
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      backgroundColor: HexColors.white,
-      body: Container(),
+      backgroundColor: HexColors.backgroundColor,
+      body: Container(
+        alignment: Alignment.center,
+        child: Image.asset(
+          "assets/images/splashLogo.png",
+        ),
+      ),
     );
   }
 
