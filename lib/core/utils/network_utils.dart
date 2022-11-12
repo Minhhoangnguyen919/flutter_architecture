@@ -35,6 +35,9 @@ class NetworkUtils {
       case ConnectivityResult.bluetooth:
         // TODO: Handle this case.
         break;
+      case ConnectivityResult.vpn:
+        // TODO: Handle this case.
+        break;
     }
   }
 

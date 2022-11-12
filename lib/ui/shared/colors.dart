@@ -16,6 +16,8 @@ class HexColors {
   static final Color greyTextField = HexColor.fromHex("#808080").withOpacity(0.5);
   static final Color colorButtonLogin = HexColor.fromHex("#f5f7fa");
 
+  static final Color backgroundColor = HexColor.fromHex("#E5E5E5");
+
 }
 
 /// Construct a color from the lower 32 bits of an [int].

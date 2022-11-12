@@ -41,6 +41,7 @@ class DimensManager {
     /// [BEGIN] Screen Size
     // MainView
     _dimensMainView = DimensMainView();
+    _dimensSplashView = DimensSplashView();
 
     /// [END] Widget Size
     /// TODO: Add more
