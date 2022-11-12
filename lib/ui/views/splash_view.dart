@@ -2,7 +2,6 @@ import 'package:develop_app_hoangnm/ui/shared/colors.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_splash_view.dart';
 import 'package:develop_app_hoangnm/view_models/splash_view_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'base_view.dart';
@@ -18,7 +17,6 @@ class SplashView extends BaseView {
 class SplashViewState extends BaseViewState<SplashView,
     SplashViewModel, DimensSplashView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _formKey = GlobalKey<FormState>();
 
   @override
   void createDimens() {
