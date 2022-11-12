@@ -1,0 +1,3 @@
+class ErrorCode {
+  //TODO ErrorCode
+}
