@@ -1,6 +1,6 @@
 import 'package:develop_app_hoangnm/core/utils/log_utils.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/base_dimens.dart';
-import 'package:develop_app_hoangnm/view_models/base_view_model.dart';
+import 'package:develop_app_hoangnm/conponent/base_view/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

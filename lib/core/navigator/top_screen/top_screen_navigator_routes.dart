@@ -1,5 +1,5 @@
 import 'package:develop_app_hoangnm/ui/views/main_view.dart';
-import 'package:develop_app_hoangnm/ui/views/splash_view.dart';
+import 'package:develop_app_hoangnm/conponent/splash_view/splash_view.dart';
 import 'package:develop_app_hoangnm/ui/widgets/banners/flavor_banner.dart';
 import 'package:flutter/material.dart';
 

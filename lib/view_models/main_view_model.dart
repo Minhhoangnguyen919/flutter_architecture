@@ -7,7 +7,7 @@ import 'package:develop_app_hoangnm/core/plugin/file/logger_manager.dart';
 import 'package:develop_app_hoangnm/core/plugin/file/zip_archive.dart';
 import 'package:develop_app_hoangnm/core/utils/log_utils.dart';
 import 'package:develop_app_hoangnm/ui/widgets/banners/flavor_config.dart';
-import 'package:develop_app_hoangnm/view_models/base_view_model.dart';
+import 'package:develop_app_hoangnm/conponent/base_view/base_view_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';

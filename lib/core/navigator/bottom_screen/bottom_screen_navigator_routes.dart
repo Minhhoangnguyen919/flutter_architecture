@@ -1,8 +1,8 @@
 import 'package:develop_app_hoangnm/core/enums/enums.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/home_view.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/search_view.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/shopping_bag_view.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/user_view.dart';
+import 'package:develop_app_hoangnm/conponent/bottom_bar_view/home_view/home_view.dart';
+import 'package:develop_app_hoangnm/conponent/bottom_bar_view/search_view/search_view.dart';
+import 'package:develop_app_hoangnm/conponent/bottom_bar_view/shopping_bag_view/shopping_bag_view.dart';
+import 'package:develop_app_hoangnm/conponent/user_view/user_view.dart';
 import 'package:flutter/material.dart';
 
 

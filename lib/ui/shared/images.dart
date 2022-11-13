@@ -6,6 +6,7 @@ class Images {
 
   //TODO constants image
   static const String splashLogo = "$imagePath/splashLogo.png";
+  static const String slideImage = "$imagePath/slide_image.png";
   static const defaultAvatar = 'assets/images/default_avt.jpg';
   static const defaultCourses = 'assets/images/png/image_demo_courses.png';
 
@@ -19,6 +20,12 @@ class Images {
   static const String iconSearchActive = "$svgPath/search_icon_active.svg";
   static const String iconShopBagActive = "$svgPath/shopping_bag_icon_active.svg";
   static const String iconUserActive = "$svgPath/user_icon_active.svg";
+  static const String iconNotificationActive = "$svgPath/notification_icon_active.svg";
+  static const String iconNotification = "$svgPath/notification_icon.svg";
+  static const String iconDot = "$svgPath/dot_icon.svg";
+  static const String iconHeart = "$svgPath/heart_icon.svg";
+  static const String iconTag = "$svgPath/tag_icon.svg";
+  static const String iconTrendingUp = "$svgPath/trending_up_icon.svg";
 
 
 

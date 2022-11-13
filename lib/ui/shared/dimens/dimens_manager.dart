@@ -3,12 +3,12 @@ import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_home_view.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_shopping_bag_view.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_splash_view.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_user_view.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/home_view.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/search_view.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/shopping_bag_view.dart';
-import 'package:develop_app_hoangnm/ui/views/botttom_bar/user_view.dart';
+import 'package:develop_app_hoangnm/conponent/bottom_bar_view/home_view/home_view.dart';
+import 'package:develop_app_hoangnm/conponent/bottom_bar_view/search_view/search_view.dart';
+import 'package:develop_app_hoangnm/conponent/bottom_bar_view/shopping_bag_view/shopping_bag_view.dart';
+import 'package:develop_app_hoangnm/conponent/user_view/user_view.dart';
 import 'package:develop_app_hoangnm/ui/views/main_view.dart';
-import 'package:develop_app_hoangnm/ui/views/splash_view.dart';
+import 'package:develop_app_hoangnm/conponent/splash_view/splash_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'dimens_main_view.dart';
 

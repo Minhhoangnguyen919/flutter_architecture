@@ -4,7 +4,7 @@ import 'package:develop_app_hoangnm/core/utils/log_utils.dart';
 import 'package:develop_app_hoangnm/ui/shared/colors.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_main_view.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
-import 'package:develop_app_hoangnm/ui/views/base_view.dart';
+import 'package:develop_app_hoangnm/conponent/base_view/base_view.dart';
 import 'package:develop_app_hoangnm/ui/widgets/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:develop_app_hoangnm/view_models/main_view_model.dart';
 import 'package:flutter/material.dart';

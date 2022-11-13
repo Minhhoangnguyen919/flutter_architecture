@@ -1,8 +1,8 @@
+import 'package:develop_app_hoangnm/conponent/user_view/user_view_model.dart';
 import 'package:develop_app_hoangnm/ui/shared/colors.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_user_view.dart';
-import 'package:develop_app_hoangnm/ui/views/base_view.dart';
-import 'package:develop_app_hoangnm/view_models/user_view_model.dart';
+import 'package:develop_app_hoangnm/conponent/base_view/base_view.dart';
 import 'package:flutter/material.dart';
 
 
@@ -31,7 +31,7 @@ class UserViewState extends BaseViewState<UserView,
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColors.backgroundColor,
+      backgroundColor: HexColors.backgroundColorSplash,
       body: Container(
         alignment: Alignment.center,
         child: Image.asset(

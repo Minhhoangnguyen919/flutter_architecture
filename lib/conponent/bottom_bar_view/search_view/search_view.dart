@@ -1,8 +1,8 @@
 import 'package:develop_app_hoangnm/ui/shared/colors.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_search.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
-import 'package:develop_app_hoangnm/ui/views/base_view.dart';
-import 'package:develop_app_hoangnm/view_models/search_view_model.dart';
+import 'package:develop_app_hoangnm/conponent/base_view/base_view.dart';
+import 'package:develop_app_hoangnm/conponent/bottom_bar_view/search_view/search_view_model.dart';
 import 'package:flutter/material.dart';
 
 
@@ -31,7 +31,7 @@ class SearchViewState extends BaseViewState<SearchView,
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColors.backgroundColor,
+      backgroundColor: HexColors.backgroundColorSplash,
       body: Container(
         alignment: Alignment.center,
         child: Image.asset(

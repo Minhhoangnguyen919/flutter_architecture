@@ -1,5 +1,5 @@
 import 'package:develop_app_hoangnm/core/navigator/top_screen/top_screen_navigator_routes.dart';
-import 'package:develop_app_hoangnm/view_models/base_view_model.dart';
+import 'package:develop_app_hoangnm/conponent/base_view/base_view_model.dart';
 
 class SplashViewModel extends BaseViewModel {
 
