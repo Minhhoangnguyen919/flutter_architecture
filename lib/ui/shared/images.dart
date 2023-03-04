@@ -26,6 +26,8 @@ class Images {
   static const String iconHeart = "$svgPath/heart_icon.svg";
   static const String iconTag = "$svgPath/tag_icon.svg";
   static const String iconTrendingUp = "$svgPath/trending_up_icon.svg";
+  static const String iconCamera = "$svgPath/camera.svg";
+  static const String iconSet = "$svgPath/set.svg";
 
 
 

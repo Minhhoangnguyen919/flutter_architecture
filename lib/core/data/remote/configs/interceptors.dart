@@ -24,8 +24,8 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
   }
 
   Map<String, String> get authorizedHeaders {
-    final String _accessToken = "token";
-    return headers..putIfAbsent('Authorization', () => "Bearer $_accessToken");
+    const String accessToken = "token";
+    return headers..putIfAbsent('Authorization', () => "Bearer $accessToken");
   }
 
   @override

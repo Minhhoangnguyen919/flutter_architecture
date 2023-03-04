@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-
 class HomeView extends BaseView {
   const HomeView({Key? key}) : super(key: key);
 
@@ -17,7 +16,8 @@ class HomeView extends BaseView {
   HomeViewState createState() => HomeViewState();
 }
 
-class HomeViewState extends BaseViewState<HomeView, HomeViewModel, DimensSplashView> {
+class HomeViewState
+    extends BaseViewState<HomeView, HomeViewModel, DimensSplashView> {
   @override
   void createDimens() {
     super.createDimens();
@@ -36,8 +36,6 @@ class HomeViewState extends BaseViewState<HomeView, HomeViewModel, DimensSplashV
     Images.iconTrendingUp,
     Images.iconDot,
   ];
-
-  double _currentSliderValue = 20;
 
   @override
   Widget buildView(BuildContext context) {
@@ -148,209 +146,115 @@ class HomeViewState extends BaseViewState<HomeView, HomeViewModel, DimensSplashV
 
   Widget _buildSlideItem() {
     return SizedBox(
-      height: viewSize.fullHeight * 0.3,
-      child: Selector<HomeViewModel, List<MenuItems>>(
-        selector: (_, viewModel)=> viewModel.list,
-        builder: (_, item, __){
-          return ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: item.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Container(
-                      width: viewSize.fullWidthSafeArea * 0.8,
-                      height: viewSize.fullHeight * 0.2,
-                      decoration: BoxDecoration(
+        height: viewSize.fullHeight * 0.3,
+        child: Selector<HomeViewModel, List<MenuItems>>(
+          selector: (_, viewModel) => viewModel.list,
+          builder: (_, item, __) {
+            return ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: item.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Container(
+                        width: viewSize.fullWidthSafeArea * 0.8,
+                        height: viewSize.fullHeight * 0.2,
+                        decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Image.asset(
-                        Images.slideImage,
-                        fit: BoxFit.cover,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Image.network(
+                          item[index].images.toString(),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                        top: viewSize.fullHeight * 0.15,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: const Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      width: viewSize.fullWidthSafeArea * 0.7,
-                      height: viewSize.fullHeight * 0.10,
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                item[index].name.toString(),
-                                style: TextStyle(
-                                  color: HexColors.textColorUserName,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                item[index].description.toString(),
-                                style: TextStyle(
-                                  color: HexColors.textColorAnswer,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Text(
-                                item[index].position.toString(),
-                                style: TextStyle(
-                                  color: HexColors.textColorUserName,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: HexColors.textColorUserName,
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Text(
-                              "5 Left",
-                              style: TextStyle(color: HexColors.white),
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: viewSize.fullHeight * 0.15,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
-        },
-      )
-    );
-  }
-
-  Widget _buildSlideItem2() {
-    return SizedBox(
-      height: viewSize.fullHeight * 0.2,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder: (context, position) {
-          return Container(
-              margin: const EdgeInsets.all(10),
-              width: viewSize.fullWidthSafeArea * 0.8,
-              height: 400,
-              decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(20)),
-              child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(Images.iconNotification),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.greenAccent),
-                          width: viewSize.fullWidthSafeArea * 0.2,
-                          height: 40,
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    width: viewSize.fullWidthSafeArea * 0.8,
-                    height: 90,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Yayasan Y Team",
-                          style: TextStyle(
-                            color: HexColors.textColorSeeAll,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
+                          ],
                         ),
-                        Slider(
-                          value: _currentSliderValue,
-                          max: 100,
-                          divisions: 1,
-
-                          label: _currentSliderValue.round().toString(),
-                          onChanged: (double value) {
-                            setState(() {
-                              _currentSliderValue = value;
-                            });
-                          },
-                        ),
-                        Row(
+                        width: viewSize.fullWidthSafeArea * 0.7,
+                        height: viewSize.fullHeight * 0.10,
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(
-                              "360.000 / 1.000.000",
-                              style: TextStyle(
-                                color: HexColors.textColorUserName,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
+                            SizedBox(
+                              width: viewSize.fullWidthSafeArea * 0.5,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    item[index].name.toString(),
+                                    style: TextStyle(
+                                        color: HexColors.textColorUserName,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                  Text(
+                                    item[index].description.toString(),
+                                    style: TextStyle(
+                                      color: HexColors.textColorAnswer,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  Text(
+                                    item[index].position.toString(),
+                                    style: TextStyle(
+                                      color: HexColors.textColorUserName,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 30),
+                              padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                  color: HexColors.textColorUserName,
-                                  borderRadius: BorderRadius.circular(5)),
+                                color: HexColors.textColorUserName,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                               child: Text(
-                                "Donate",
+                                "5 Left",
                                 style: TextStyle(
                                   color: HexColors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             )
                           ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ));
-        },
-      ),
-    );
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+        ));
   }
 
   Widget _buildCategories() {

@@ -14,7 +14,8 @@ class NetworkUtils {
       case ConnectivityResult.wifi:
       case ConnectivityResult.ethernet:
       case ConnectivityResult.mobile:
-      // case ConnectivityResult.bluetooth:
+      case ConnectivityResult.vpn:
+      case ConnectivityResult.bluetooth:
         _isConnectToInternet = await DataConnectionChecker().hasConnection;
         break;
       case ConnectivityResult.none:
