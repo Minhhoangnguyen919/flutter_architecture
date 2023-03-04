@@ -1,6 +1,6 @@
 class Constants {
   const Constants._();
-  //TODO Constants
+
   static const String stringEmpty = "";
 
   /// Radius of sign up view

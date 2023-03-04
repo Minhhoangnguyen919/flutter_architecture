@@ -20,11 +20,9 @@ enum StatusCode {
   noInternet,
   unauthorized,
   badRequest,
-  pageNotFound,
   forbiddenError,
   internalError,
   serviceUnavailable,
-  myQRCodeTokenInvalid,
   serverTimeOutError,
   appTimeOutError,
 }
@@ -74,9 +72,6 @@ class ApiException extends DioError {
   }
 }
 
-
-/// サーバー内部のプログラムエラー
-/// 500
 class FetchDataException extends ApiException {
   FetchDataException(RequestOptions requestOptions, [Failure? failure])
       : super(
@@ -94,16 +89,12 @@ class ForbiddenException extends ApiException {
             StatusCode.forbiddenError, failure);
 }
 
-/// パラメータ不正
-/// 400
 class BadRequestException extends ApiException {
   BadRequestException(RequestOptions requestOptions, [Failure? failure])
       : super(requestOptions, "Invalid request: ", StatusCode.badRequest,
             failure);
 }
 
-/// アクセストークンが不正 or 会員資格が無効
-/// 401
 class UnauthorisedException extends ApiException {
   UnauthorisedException(RequestOptions requestOptions, [Failure? failure])
       : super(
@@ -114,18 +105,6 @@ class UnauthorisedException extends ApiException {
         );
 }
 
-class IgnoreException extends ApiException {
-  IgnoreException(RequestOptions requestOptions, [Failure? failure])
-      : super(
-          requestOptions,
-          "Ignore request: ",
-          StatusCode.unauthorized,
-          failure,
-        );
-}
-
-/// サーバーが停止している
-/// 503
 class ServerUnavailableException extends ApiException {
   ServerUnavailableException(RequestOptions requestOptions, [Failure? failure])
       : super(
@@ -136,38 +115,20 @@ class ServerUnavailableException extends ApiException {
         );
 }
 
-/// サーバー側通信のタイムアウト
-/// 504
 class ServerTimeOutException extends ApiException {
   ServerTimeOutException(RequestOptions requestOptions, [Failure? failure])
       : super(requestOptions, "Server timeout exception: ",
             StatusCode.serverTimeOutError, failure);
 }
 
-// When can not get ble password will throw exception
-class BLEApiDetailException extends ApiException {
-  ApiException err; // Error child
-  BLEApiDetailException({required this.err})
-      : super(
-            err.requestOptions, "BLEApiDetailException", StatusCode.none, null);
-}
-
-class LoginTimeoutBadRequestException extends ApiException {
-  LoginTimeoutBadRequestException(RequestOptions requestOptions,
-      [Failure? failure])
-      : super(requestOptions, "Retry login timeout bad request: ",
-            StatusCode.badRequest, failure);
-}
-
-/// アプリ内タイムアウト
-class AppTimeOutException extends ApiException {
-  AppTimeOutException(RequestOptions requestOptions, [Failure? failure])
-      : super(requestOptions, "App timeout exception: ",
-            StatusCode.appTimeOutError, failure);
-}
-
 class NoInternetException extends ApiException {
   NoInternetException(RequestOptions requestOptions, [Failure? failure])
       : super(requestOptions, "App timeout exception: ",
       StatusCode.noInternet, failure);
+}
+
+class AppTimeOutException extends ApiException {
+  AppTimeOutException(RequestOptions requestOptions, [Failure? failure])
+      : super(requestOptions, "App timeout exception: ",
+            StatusCode.appTimeOutError, failure);
 }

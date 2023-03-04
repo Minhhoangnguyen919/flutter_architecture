@@ -15,8 +15,11 @@ class HexColors {
   static final Color buttonLoginColor = HexColor.fromHex("#2A2C2D");
   static final Color greyTextField = HexColor.fromHex("#808080").withOpacity(0.5);
   static final Color colorButtonLogin = HexColor.fromHex("#f5f7fa");
-
+  static final Color backgroundColorSplash = HexColor.fromHex("#F8F6EF");
   static final Color backgroundColor = HexColor.fromHex("#E5E5E5");
+  static final Color textColorUserName = HexColor.fromHex("#ECA459");
+  static final Color textColorAnswer = HexColor.fromHex("#7E7E7E");
+  static final Color textColorSeeAll = HexColor.fromHex("#57B99D");
 
 }
 

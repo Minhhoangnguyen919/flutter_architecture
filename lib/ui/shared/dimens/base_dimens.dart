@@ -16,7 +16,6 @@ class BaseDimens {
 
   double textScaleFactor = 0;
 
-  // ステータスバーとホームインジケータの値が正常に取れないViewがあるため、staticで値を保持する
   static double staticStatusBarHeight = 0;
   static double staticHomeIndicatorHeight = 0;
 
@@ -54,26 +53,17 @@ class BaseDimens {
     // Detect font scale
     textScaleFactor = MediaQuery.of(context).textScaleFactor;
 
-    /// [BEGIN] ステータスバーとホームインジケータの値が正常に取れないViewがあるため、staticで値を保持します。
-    /// 　　　　 staticに保持された値をstatusBarHeightまたはhomeIndicatorHeightに代入して使用します。
-    // 各Viewで新規に値を取得する
     final newStatusBarHeight = MediaQuery.of(context).padding.top;
     final newHomeIndicatorHeight = MediaQuery.of(context).padding.bottom;
-    // 値を更新する時の条件：①新規に取れた値が0でない時 & ②古い値と新規の値で異なっていた時
     if ((newStatusBarHeight != 0) &&
         (newStatusBarHeight != staticStatusBarHeight)) {
       staticStatusBarHeight = newStatusBarHeight;
     }
-    // 使用する変数にstaticの値を代入する
     statusBarHeight = staticStatusBarHeight;
-    // 値を更新する時の条件：①新規に取れた値が0でない時 & ②古い値と新規の値で異なっていた時
     if ((newHomeIndicatorHeight != 0) &&
         (newHomeIndicatorHeight != staticHomeIndicatorHeight)) {
       staticHomeIndicatorHeight = newHomeIndicatorHeight;
     }
-    // 使用する変数にstaticの値を代入する
-    // BaseDimensを継承するDimensクラスからのstatic参照を防ぐため、非static変数に再代入する
-    // 実際の計算には非static変数を使用する
     homeIndicatorHeight = staticHomeIndicatorHeight;
 
     /// [END]
@@ -89,7 +79,6 @@ class BaseDimens {
 
     headerBorderHeight = fullHeightSafeArea * 0.001;
 
-    // 0.08 is 8%
     footerTabHeight = (fullHeightSafeArea * 0.08) + homeIndicatorHeight;
 
     _fullHeightChange = (orientation == Orientation.portrait)
@@ -107,7 +96,6 @@ class BaseDimens {
     initialDimens<T>();
   }
 
-  //Size determination for each screen
   void initialDimens<T>() {}
 
   void allowCalculatorSize(

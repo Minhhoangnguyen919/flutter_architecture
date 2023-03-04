@@ -4,8 +4,9 @@ import 'package:http_mock_adapter/http_mock_adapter.dart';
 
 import 'app_dio.dart';
 
-/// Developers with mock api for testing ...
+/// HardCode mock api for testing ...
 class MockAPIHelpers {
+
   /// You need test API with mock response we can set true.
   bool hasMockAPI = FlavorConfig.instance!.hasMockAPI;
 

@@ -32,7 +32,6 @@ class InfoUtils {
       "";
 
   void destroyInstance() {
-    //インスタンス破棄
     _instance = null;
   }
 }

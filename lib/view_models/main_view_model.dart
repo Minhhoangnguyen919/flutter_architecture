@@ -1,12 +1,13 @@
+import 'dart:collection';
 import 'dart:io';
 
 import 'package:develop_app_hoangnm/core/constants/constants.dart';
-import 'package:develop_app_hoangnm/core/l10n/strings.dart';
+import 'package:develop_app_hoangnm/core/enums/enums.dart';
 import 'package:develop_app_hoangnm/core/plugin/file/logger_manager.dart';
 import 'package:develop_app_hoangnm/core/plugin/file/zip_archive.dart';
 import 'package:develop_app_hoangnm/core/utils/log_utils.dart';
 import 'package:develop_app_hoangnm/ui/widgets/banners/flavor_config.dart';
-import 'package:develop_app_hoangnm/view_models/base_view_model.dart';
+import 'package:develop_app_hoangnm/conponent/base_view/base_view_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -14,6 +15,28 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 class MainViewModel extends BaseViewModel {
+
+  BottomTabItem _currentBottomTab = BottomTabItem.homeView;
+
+  BottomTabItem get currentBottomTab => _currentBottomTab;
+
+  final ListQueue<BottomTabItem> _stackPrevBottomTab = ListQueue();
+
+  void changeTab(BottomTabItem tab, {bool isBackClick = false}) {
+    if (!isBackClick) {
+      if (!_stackPrevBottomTab.contains(currentBottomTab)) {
+        _stackPrevBottomTab.addLast(currentBottomTab);
+      } else {
+        _stackPrevBottomTab.remove(currentBottomTab); // Remove old index stack
+        _stackPrevBottomTab
+            .addLast(currentBottomTab); // Replace new index stack
+
+      }
+    }
+    _currentBottomTab = tab;
+    updateUI();
+  }
+
   Future<void> sendMailFeedback() async {
     final now = DateTime.now();
     String emailSubject =
@@ -81,8 +104,8 @@ class MainViewModel extends BaseViewModel {
 
   void _onToastMessage() {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(Strings.of(context)!.sendMailFailed),
+      const SnackBar(
+        content: Text("sendMail"),
       ),
     );
   }

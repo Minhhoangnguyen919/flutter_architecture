@@ -7,14 +7,6 @@ extension DurationExtensions on Duration {
   }
 
   /// Converts the duration into a readable string
-  /// 15:35
-  String toMinutesSeconds() {
-    String twoDigitMinutes = _toTwoDigits(inMinutes.remainder(60));
-    String twoDigitSeconds = _toTwoDigits(inSeconds.remainder(60));
-    return "$twoDigitMinutes:$twoDigitSeconds";
-  }
-
-  /// Converts the duration into a readable string
   /// 05:15:35
   String toHoursMinutesSeconds() {
     String twoDigitMinutes = _toTwoDigits(inMinutes.remainder(60));
@@ -25,5 +17,13 @@ extension DurationExtensions on Duration {
   String _toTwoDigits(int n) {
     if (n >= 10) return "$n";
     return "0$n";
+  }
+
+  /// Converts the duration into a readable string
+  /// 15:35
+  String toMinutesSeconds() {
+    String twoDigitMinutes = _toTwoDigits(inMinutes.remainder(60));
+    String twoDigitSeconds = _toTwoDigits(inSeconds.remainder(60));
+    return "$twoDigitMinutes:$twoDigitSeconds";
   }
 }

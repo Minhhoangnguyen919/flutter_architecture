@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:http/http.dart';
+import 'package:develop_app_hoangnm/core/plugin/internet/data_conection_checker.dart';
 
 import 'log_utils.dart';
 
@@ -16,27 +15,10 @@ class NetworkUtils {
       case ConnectivityResult.ethernet:
       case ConnectivityResult.mobile:
       // case ConnectivityResult.bluetooth:
-        try {
-          final result = await InternetAddress.lookup('google.com');
-          if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-            _isConnectToInternet = true;
-          } else {
-            _isConnectToInternet = false;
-          }
-        } on SocketException catch (_) {
-          _isConnectToInternet = false;
-        } on ClientException catch (_) {
-          _isConnectToInternet = false;
-        }
+        _isConnectToInternet = await DataConnectionChecker().hasConnection;
         break;
       case ConnectivityResult.none:
         _isConnectToInternet = false;
-        break;
-      case ConnectivityResult.bluetooth:
-        // TODO: Handle this case.
-        break;
-      case ConnectivityResult.vpn:
-        // TODO: Handle this case.
         break;
     }
   }

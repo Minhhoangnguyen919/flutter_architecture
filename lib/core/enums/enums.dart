@@ -3,13 +3,18 @@ enum Flavor {
   production,
 }
 
+enum BottomTabItem {
+  homeView,
+  bagView,
+  searchView,
+  userView,
+}
+
 enum BuildMode {
   debug,
   profile,
   release,
 }
-
-enum OnOffState { on, off }
 
 enum Level {
   error,

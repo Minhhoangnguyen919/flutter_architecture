@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import 'package:develop_app_hoangnm/ui/shared/colors.dart';
-import 'package:develop_app_hoangnm/core/l10n/strings.dart';
 import 'package:develop_app_hoangnm/ui/shared/app_theme.dart';
 import 'package:intl_phone_field/phone_number.dart';
 
@@ -141,7 +140,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
         });
       } else {
         setState(() {
-          validPhoneNumber = Strings.of(context)!.phoneNumberInValid;
+          // validPhoneNumber = Strings.of(context)!.phoneNumberInValid;
         });
       }
     }

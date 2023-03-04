@@ -1,11 +1,10 @@
 import 'package:develop_app_hoangnm/ui/shared/colors.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_manager.dart';
 import 'package:develop_app_hoangnm/ui/shared/dimens/dimens_splash_view.dart';
-import 'package:develop_app_hoangnm/view_models/splash_view_model.dart';
+import 'package:develop_app_hoangnm/conponent/splash_view/splash_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import 'base_view.dart';
+import '../base_view/base_view.dart';
 
 
 class SplashView extends BaseView {
@@ -38,7 +37,7 @@ class SplashViewState extends BaseViewState<SplashView,
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColors.backgroundColor,
+      backgroundColor: HexColors.backgroundColorSplash,
       body: Container(
         alignment: Alignment.center,
         child: Image.asset(

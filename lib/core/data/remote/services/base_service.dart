@@ -4,7 +4,6 @@ import 'package:develop_app_hoangnm/core/data/remote/configs/app_dio.dart';
 import 'package:develop_app_hoangnm/core/data/remote/configs/mock_api.dart';
 import 'package:develop_app_hoangnm/core/utils/log_utils.dart';
 
-/// API Request送信
 abstract class BaseService {
 
   final MockAPIHelpers mockAPIHelpers = MockAPIHelpers();
