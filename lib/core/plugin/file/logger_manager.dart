@@ -12,38 +12,19 @@ class LoggerManager {
   static const String zipLogDateFormat = 'yyyyMMddHHmmss';
   static const String nameZipLogFile = "eLearningLog";
   static const String zipExt = ".zip";
-  // 最大ファイル個数
   static const int maxFileNumbers = 3;
   static const int maxLibFileNumbers = 3;
-
-  // エラーログファイル保存フォルダ
   static const String errorLogFolder = "log";
-  // デバッグログファイル保存フォルダ
   static const String debugLogFolder = "debug";
-
-  // デバッグログラベル
-  static const String debugLogPrefix = "ALAPDebug_";
-  // ログファイル名日付フォーマット
+  static const String debugLogPrefix = "LOG_Debug_";
   static const String logFileDateFormat = "yyyyMMdd";
-  // デバッグログ日付フォーマット
   static const String debugLogDateFormat = "yyyy-MM-dd HH:mm:ss.SSS";
-
-  // ログ発生日付フォーマット
   static const String logDateFormat = "yyyy/MM/dd HH:mm:ss";
-
-  // エラーログ1ファイルのリミットサイズ
   static const int errorLogFileLimit = (10 * 1024);
-  // デバッグログ1ファイルのリミットサイズ
   static const int debugLogFileLimit = (1500 * 1024);
-
-  // ログファイル名長
   static const int logFileNameLength = logFileDateFormat.length + '01'.length;
-
-  // デバッグログファイル名長
   static const int debugLogFileNameLength =
       debugLogPrefix.length + logFileNameLength;
-
-  // ファイル認識番号最大数
   static const int maxFileNameNumbers = 99;
   static const String storageDirAndroidLib = 'ocl';
   static const String storageDirIosLib = 'consoleLog';
@@ -55,7 +36,6 @@ class LoggerManager {
   factory LoggerManager() => _instance ??= const LoggerManager._();
 
   void destroyInstance() {
-    //インスタンス破棄
     _instance = null;
   }
 
@@ -86,14 +66,11 @@ class LoggerManager {
     final limitSizeFile = isErrorLog ? errorLogFileLimit : debugLogFileLimit;
     final List<File> files = await _filesInDirectory(dir);
     if (files.isEmpty) {
-      // 初回ログファイル作成
       file = File('${dir.path}/${_createFileName(isErrorLog, 1)}');
     } else {
       if (files.length < maxFileNumbers) {
-        // 1ファイルある場合
         file = files[0];
       } else {
-        // 2ファイルある場合
         File file1 = files[0];
         File file2 = files[1];
         final file1Name = _getNameFile(file1.path);
@@ -124,13 +101,10 @@ class LoggerManager {
 
       String addString = '\n$message';
       int l = file.lengthSync() + addString.length;
-      // リミットを超える場合
       if (l > limitSizeFile) {
         if (oldFile != null && oldFile.existsSync()) {
-          // 2ファイルある場合は古いファイルを削除する
           await oldFile.delete();
         }
-        // 新規ログファイル作成
         int newSeq = 1;
         final int startLength = isErrorLog ? 0 : debugLogPrefix.length;
         final int endLength = isErrorLog
@@ -183,9 +157,7 @@ class LoggerManager {
     in dir.list(recursive: true, followLinks: false)) {
       files.add(entity as File);
     }
-    // 何らかの理由で消せないファイルが出てきた場合に最新ログ2ファイルを取得する
     if (files.isNotEmpty && files.length > maxFileNumbers) {
-      // ファイル名降順ソート
       files.sort((file1, file2) =>
           _getNameFile(file2.path).compareTo(_getNameFile(file1.path)));
       files = files.sublist(0, maxFileNumbers);
@@ -199,7 +171,6 @@ class LoggerManager {
     return await Directory('$path/$folderName').create(recursive: true);
   }
 
-  /// ログファイル書き込み
   Future<void> _writeLogFile(File file, String message) async {
     String logData = message;
     await file.exists().then((exists) {

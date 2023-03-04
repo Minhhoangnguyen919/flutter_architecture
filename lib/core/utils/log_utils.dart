@@ -63,7 +63,6 @@ class LogUtils {
 
   static String _outputMessage(String msg) {
     String stackTrace = StackTrace.current.toString();
-    // スタックトレースから情報を取得 // 0: LogUtils._outputMessage, 1: LogUtils.e, 2: 呼び出し元
     String topStack = stackTrace.split("#2")[1];
     String fileInfo = topStack
         .substring(topStack.indexOf("package"), topStack.indexOf(")"))

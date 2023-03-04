@@ -6,8 +6,6 @@ class DeviceUtils {
       return BuildMode.release;
     }
     var result = BuildMode.profile;
-
-    //Little trick, since assert only runs on DEBUG mode
     assert(() {
       result = BuildMode.debug;
       return true;

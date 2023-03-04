@@ -4,7 +4,7 @@ import 'package:develop_app_hoangnm/core/utils/log_utils.dart';
 import 'package:flutter/services.dart';
 
 class ZipArchie {
-  static const MethodChannel _channel = MethodChannel('E_LEARNING_CHANNEL');
+  static const MethodChannel _channel = MethodChannel('ZIP_CHANNEL');
 
   static ZipArchie? _instance;
 
@@ -13,7 +13,6 @@ class ZipArchie {
   factory ZipArchie() => _instance ??= const ZipArchie._();
 
   void destroyInstance() {
-    //インスタンス破棄
     _instance = null;
   }
 

@@ -24,9 +24,8 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
   }
 
   Map<String, String> get authorizedHeaders {
-    final String accessToken = SPrefUserModel().getAccessToken() ?? "";
-    return headers..putIfAbsent('Authorization', () => "Bearer $accessToken");
-
+    final String _accessToken = "token";
+    return headers..putIfAbsent('Authorization', () => "Bearer $_accessToken");
   }
 
   @override
@@ -103,27 +102,14 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
       DioError err, ErrorInterceptorHandler handler,
       {int retryCount = 1}) async {
     LogUtils.d("【retryCount】 => $retryCount");
-
-    /// Others API handlers ...
-    /// API Response(401:UnAuthorized) 送信
     LogUtils.d("【_processRefreshToken:retry】");
     RequestOptions requestOptions = err.response!.requestOptions;
-
-    /// ログイン処理 Request送信
     await _refreshAccessToken().then((newUser) async {
-      /// [200:OK]
-      /// ログイン処理 Response送信
-      /// accessToken取得
-      /// 登録結果
-
       if (newUser != null) {
-        SPrefUserModel().setAccessToken(newUser.accessToken);
-        SPrefUserModel().setRefreshToken(newUser.refreshToken);
-        SPrefUserModel().setExpiration(newUser.expiration);
-        SPrefUserModel().setExpires(newUser.expires);
+        //save data db local
       }
       LogUtils.d(
-          "【interceptor:retry】【${err.requestOptions.uri.path}】[$retryCount] has new token");
+          "interceptor:retry】【${err.requestOptions.uri.path}】[$retryCount] has new token");
       // Repeat call api ...
       await appDio.fetch<dynamic>(requestOptions).then((r) {
         handler.resolve(r);
@@ -133,19 +119,14 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
     }).onError<DioError>((errorRefreshToken, stackTrace) async {
       LogUtils.d(
           "【interceptor:refresh_token:error】【${err.requestOptions.uri.path}】[$retryCount] refresh token has error $errorRefreshToken");
-      // 400が返却された場合、エラーダイアログ①「異常が発生しています」というダイアログを表示する
       if (errorRefreshToken is BadRequestException) {
-        handler.reject(LoginTimeoutBadRequestException(
-          errorRefreshToken.requestOptions,
-          errorRefreshToken.failure,
-        ));
+        // if return get view error
         return;
       } else if (errorRefreshToken is UnauthorisedException) {
         if (retryCount > 1) {
           handler.reject(errorRefreshToken);
           return;
         } else {
-          /// 401 refreshToken
           await _processRefreshToken(err, handler, retryCount: 2);
           return;
         }
@@ -158,11 +139,11 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
 
   Future<UserModel?> _refreshAccessToken() async {
     await SPrefUserModel().onInit();
-    final String? accessToken = SPrefUserModel().getAccessToken();
-    final String? refreshToken = SPrefUserModel().getRefreshToken();
-    Uri uri =
-        appDio.processUri(url: "", param: null);
-    final body = {"accessToken": accessToken, "refreshToken": refreshToken};
+    // final String? accessToken = SPrefUserModel().getAccessToken();
+    // final String? refreshToken = SPrefUserModel().getRefreshToken();
+    Uri uri = appDio.processUri(url: "", param: null);
+    // todo init data when remember password
+    final body = {"accessToken": "accessToken", "refreshToken": "refreshToken"};
     LogUtils.d(
         '[$runtimeType][REQUEST:POST][REFRESH_TOKEN] API:【${uri.path}】 body:$body');
     return appDio
@@ -177,7 +158,9 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
 
   bool _isNetworkError(DioError err) {
     return err.error != null &&
-        (err.error is SocketException || err.error is HttpException);
+        (err.error is HandshakeException ||
+            err.error is SocketException ||
+            err.error is HttpException);
   }
 
   bool _isTimeoutException(DioError err) {

@@ -16,8 +16,6 @@ enum BuildMode {
   release,
 }
 
-enum OnOffState { on, off }
-
 enum Level {
   error,
   warn,

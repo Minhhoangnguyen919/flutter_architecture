@@ -12,11 +12,8 @@ class Strings with StringsImpl {
 
     final localeName = Intl.canonicalizedLocale(name);
 
-    // 言語リソース読み込み
     return initializeMessages(localeName).then((_) {
-      // デフォルト言語を設定
       Intl.defaultLocale = localeName;
-      // 自身を返す
       return Strings();
     });
   }

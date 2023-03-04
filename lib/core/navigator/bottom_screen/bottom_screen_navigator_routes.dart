@@ -37,7 +37,6 @@ class BottomScreenNavigatorRoutes {
     };
   }
 
-  /// Get Route name with bottom tab item
   String routeName(BottomTabItem tabItem) {
     return _routes[tabItem]!;
   }

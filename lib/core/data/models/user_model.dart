@@ -1,17 +1,3 @@
-class DataResponseModel {
-  bool? status;
-  String? message;
-
-  DataResponseModel({this.status, this.message});
-
-  factory DataResponseModel.fromJson(Map<String, dynamic> json) {
-    return DataResponseModel(
-      status: json['status'] as bool?,
-      message: json['message'] as String?,
-    );
-  }
-}
-
 class UserModel {
   final String accessToken;
   final String refreshToken;

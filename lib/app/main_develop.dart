@@ -8,9 +8,7 @@ import 'package:flutter/material.dart';
 const Flavor flavorName = Flavor.develop;
 
 void main() async {
-  // Wait for calculator size
   await WaitApplyScreenSize().waitScreenSizeAvailable();
-  // Setup Flavor
   _setUpFlavorDevelop();
   runApp(const Application());
 }
@@ -19,13 +17,10 @@ void _setUpFlavorDevelop() {
   FlavorConfig(
       flavor: flavorName,
       color: Colors.redAccent,
-      // それ以外のAPIの接続先
       baseApiUrl: "",
       versionAPI: "",
       othersVersionApi: {},
       supportMailAddress: "",
-      saveRidingLogApiUrl: "",
-      saveRidingLogVersionApi: "",
-      hasMockAPI: false,
+      hasMockAPI: true,
   );
 }

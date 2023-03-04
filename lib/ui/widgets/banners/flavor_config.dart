@@ -8,9 +8,6 @@ class FlavorConfig {
   final String baseApiUrl;
   final String versionApi;
   final Map<String, String>? othersVersionApi;
-  /// 走行ログ保存APIのみ別のサーバー
-  final String saveRidingLogApiUrl;
-  final String saveRidingLogVersionApi;
   final String supportMailAddress;
   final bool hasMockAPI; // use http_mock_adapter
 
@@ -24,8 +21,6 @@ class FlavorConfig {
     required this.versionApi,
     this.othersVersionApi,
     required this.supportMailAddress,
-    required this.saveRidingLogApiUrl,
-    required this.saveRidingLogVersionApi,
     required this.hasMockAPI,
   });
 
@@ -36,8 +31,6 @@ class FlavorConfig {
     required String versionAPI,
     Map<String, String>? othersVersionApi,
     required String supportMailAddress,
-    required String saveRidingLogApiUrl,
-    required String saveRidingLogVersionApi,
     required bool hasMockAPI,
   }) {
     return _instance ??= FlavorConfig._(
@@ -48,8 +41,6 @@ class FlavorConfig {
       versionApi: versionAPI,
       othersVersionApi: othersVersionApi,
       supportMailAddress: supportMailAddress,
-      saveRidingLogApiUrl: saveRidingLogApiUrl,
-      saveRidingLogVersionApi: saveRidingLogVersionApi,
       hasMockAPI: hasMockAPI,
     );
   }
