@@ -23,3 +23,15 @@ enum Level {
   debug,
   trace,
 }
+
+enum QRWidgetViewType {
+  qrView,
+  scanView,
+}
+
+enum QRScanResult {
+  idle,
+  scanning,
+  scanSuccess,
+  scanFailure,
+}

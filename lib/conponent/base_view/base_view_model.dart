@@ -47,7 +47,6 @@ abstract class BaseViewModel extends ChangeNotifier {
   void onBuildComplete({bool isNeedReBuildByOtherViewModel = true}) {
     if (isNeedReBuildByOtherViewModel && !_notifierList.contains(this)) {
       LogUtils.d("add [$this] notifier list");
-      // 自身のインスタンス(this)を_notifierListに追加する。
       _notifierList.add(this);
     }
   }
@@ -59,13 +58,10 @@ abstract class BaseViewModel extends ChangeNotifier {
 
   void updateUI() {
     LogUtils.d("[updateUI:$runtimeType]");
-    // 破棄される_listenersオブジェクトの場合、状態の変化を通知しない
     if (!_isEmptyListeners) {
-      // 状態の変化を通知
       notifyListeners();
     }
     if (_notifierList.isEmpty) return;
-    // _notifierList分のnotifyListeners()を呼び出す。
     for (ChangeNotifier notifier in _notifierList) {
       if (notifier != this) {
         notifier.notifyListeners();
@@ -82,25 +78,17 @@ abstract class BaseViewModel extends ChangeNotifier {
     MessageUtils.showToastMessage(context, message ?? "");
   }
 
-  // Call when:
-  // + dispose
-  // + change screen
   void removeNotifier() {
     if (_notifierList.contains(this)) {
       LogUtils.i("viewModel:remove:notifier[$runtimeType]");
-      // 自身のインスタンス(this)を_notifierListから削除する。
       _notifierList.remove(this);
     }
   }
 
-  // Call when:
-  // + dispose
-  // + change screen
   void clearNotifier() {
     _notifierList.clear();
   }
 
-  /// 破棄の処理
   @override
   void dispose() {
     LogUtils.i("viewModel:dispose[$runtimeType]");

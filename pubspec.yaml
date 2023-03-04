@@ -52,9 +52,9 @@ dependencies:
   shared_preferences: ^2.0.15
   intl_phone_field: ^3.1.0
   image_picker: ^0.8.6
-  equatable: ^2.0.5
-  flutter_rating_bar: ^4.0.1
-  readmore: ^2.2.0
+  nfc_manager: ^3.2.0
+  qr_code_scanner: ^1.0.1
+  qr_flutter: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
